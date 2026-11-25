@@ -1,0 +1,7 @@
+---
+import { approach } from '../data/site';
+---
+<section class="approach section">
+  <div class="approach-title reveal"><span class="eyebrow dark">{approach.eyebrow}</span><h2>{approach.title}<br /><em>{approach.titleEmphasis}</em></h2><p>{approach.intro[0]}<br />{approach.intro[1]}</p></div>
+  <div class="steps">{approach.steps.map((step, i) => <article class="reveal"><span>0{i + 1}</span><div><h3>{step.title}</h3><p>{step.text}</p></div></article>)}</div>
+</section>

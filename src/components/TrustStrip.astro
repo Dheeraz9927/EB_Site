@@ -1,0 +1,4 @@
+---
+import { trust } from '../data/site';
+---
+<div class="trust-strip">{trust.map(item => <div><strong>{item.title}</strong><span>{item.text}</span></div>)}</div>

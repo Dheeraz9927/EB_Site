@@ -1,0 +1,11 @@
+---
+import { nav } from '../data/site';
+interface Props { base?: string }
+const { base = '' } = Astro.props;
+---
+<header id="top">
+  <a class="brand" href="/" aria-label="Elaena Brokers home"><img class="brand-logo" src="/assets/logo.webp" width="660" height="180" alt="" decoding="async" /></a>
+  <nav aria-label="Main navigation" id="nav">{nav.map(item => <a href={base + item.href}>{item.label}</a>)}</nav>
+  <button class="button nav-cta" data-open-planner>Let’s find your fit</button>
+  <button class="menu-button" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>
+</header>

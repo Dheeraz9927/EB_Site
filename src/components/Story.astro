@@ -1,0 +1,17 @@
+---
+import { story } from '../data/site';
+---
+<section class="story section" id="story">
+  <div class="story-art reveal">
+    <span class="eyebrow">{story.artEyebrow}</span>
+    <div class="large-ten">{story.years}<span>{story.yearsLabel[0]}<br />{story.yearsLabel[1]}</span></div>
+    <div class="career-path">{story.careerPath.map((step, i) => <>{i > 0 && <i></i>}<span>{step}</span></>)}</div>
+    <p>{story.artQuote[0]}<br />{story.artQuote[1]}</p>
+  </div>
+  <div class="story-copy reveal">
+    <span class="eyebrow dark">{story.eyebrow}</span>
+    <h2>{story.title}<br /><em>{story.titleEmphasis}</em></h2>
+    {story.paragraphs.map(text => <p>{text}</p>)}
+    <div class="founder-signoff"><span class="initials">{story.signoff.initials}</span><div><strong>{story.signoff.name}</strong><span>{story.signoff.role}</span></div></div>
+  </div>
+</section>

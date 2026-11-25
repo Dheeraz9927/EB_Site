@@ -1,0 +1,18 @@
+---
+// Shared page shell: header, footer, coverage planner and site script.
+import Layout from './Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CoveragePlanner from '../components/CoveragePlanner.astro';
+interface Props { title?: string; description?: string; noindex?: boolean; home?: boolean }
+const { home = false, ...meta } = Astro.props;
+const base = home ? '' : '/';
+---
+<Layout {...meta}>
+  <a class="skip" href="#main">Skip to content</a>
+  <Header base={base} />
+  <main id="main" class:list={[{ subpage: !home }]}><slot /></main>
+  <Footer base={base} />
+  <CoveragePlanner />
+  <script>import '../scripts/main';</script>
+</Layout>

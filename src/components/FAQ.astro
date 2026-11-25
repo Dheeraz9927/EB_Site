@@ -1,0 +1,5 @@
+---
+import { questions } from '../data/faq';
+---
+<section class="faq section" id="answers"><div class="reveal"><span class="eyebrow dark">A LITTLE CLARITY GOES A LONG WAY</span><h2>Good questions.<br /><em>Straightforward answers.</em></h2></div>
+<div class="faq-list reveal">{questions.map(item => <details><summary>{item.question}<span aria-hidden="true">+</span></summary><p>{item.answer}</p></details>)}</div></section>

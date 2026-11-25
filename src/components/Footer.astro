@@ -1,0 +1,19 @@
+---
+import { business, contact, footer } from '../data/site';
+import { coverageKeys, coveragePages } from '../data/coverage';
+interface Props { base?: string }
+const { base = '' } = Astro.props;
+---
+<footer>
+  <div class="footer-top">
+    <a class="brand" href="/"><img class="brand-logo" src="/assets/logo.webp" width="660" height="180" alt="Elaena Brokers home" decoding="async" loading="lazy" /></a>
+    <p>{footer.tagline[0]}<br />{footer.tagline[1]}</p>
+    <p class="footer-contact"><a href={contact.phoneHref}>{contact.phoneDisplay}</a><br /><a href={`mailto:${contact.email}`}>{contact.email}</a><br /><span>Hours: {contact.hours}</span></p>
+    <div class="footer-links">
+      {coverageKeys.map(key => <a href={`/${coveragePages[key].slug}/`}>{coveragePages[key].navLabel}</a>)}
+      <a href={`${base}#team`}>Our team</a><a href={`${base}#answers`}>FAQs</a><a href="/privacy/">Privacy</a>
+    </div>
+  </div>
+  <div class="footer-bottom"><span>© <span data-year>{new Date().getFullYear()}</span> {business.name}</span><span>{footer.motto}</span></div>
+  <p class="legal">{footer.legal}</p>
+</footer>

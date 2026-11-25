@@ -1,0 +1,20 @@
+---
+import Page from '../layouts/Page.astro';
+import { business, contact } from '../data/site';
+---
+<Page title="Privacy | Elaena Brokers Inc." description="How the Elaena Brokers Inc. website handles your information.">
+  <article class="section prose" aria-labelledby="page-title">
+    <span class="eyebrow dark">PRIVACY</span>
+    <h1 id="page-title">Your privacy on this website</h1>
+    <p>This page explains how the {business.name} website handles information. It covers this website only.</p>
+    <h2>What this website collects</h2>
+    <p>This website has no forms, accounts, cookies, analytics or advertising trackers. It does not ask you to enter personal information.</p>
+    <p>Like most websites, the hosting service that delivers these pages may keep standard technical logs, such as IP address, browser type and the pages requested, to operate and secure the service.</p>
+    <h2>The call planner</h2>
+    <p>The call planner runs entirely in your browser. What you select and tick off is not saved or sent to {business.shortName}, and it is cleared when you leave the page. Its email button only opens a draft in your own email app; nothing is sent unless you choose to send it. Using the planner does not request a quote or arrange coverage.</p>
+    <h2>When you contact us</h2>
+    <p>If you call or email us, we receive the information you choose to share, such as your name, contact details and the reason you’re getting in touch. Please don’t send driver’s licence, banking or payment details by email.</p>
+    <h2>Questions</h2>
+    <p>For privacy questions, email <a href={`mailto:${contact.email}`}>{contact.email}</a> or call <a href={contact.phoneHref}>{contact.phoneDisplay}</a>.</p>
+  </article>
+</Page>

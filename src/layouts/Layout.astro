@@ -1,0 +1,70 @@
+---
+import '@fontsource/dm-sans/latin-400.css';
+import '@fontsource/dm-sans/latin-500.css';
+import '@fontsource/dm-sans/latin-600.css';
+import '@fontsource/manrope/latin-400.css';
+import '@fontsource/manrope/latin-500.css';
+import '@fontsource/manrope/latin-600.css';
+import '../styles/base.css';
+import '../styles/glass.css';
+import '../styles/pages.css';
+import { business, contact } from '../data/site';
+interface Props { title?: string; description?: string; noindex?: boolean; }
+const {
+  title = 'Elaena Brokers Inc. | Insurance, with you in mind.',
+  description = 'Meet Elaena Brokers Inc., a Hamilton-based UniBrokers franchise led by Aayush Khatri. Personal guidance for auto, home and commercial insurance.',
+  noindex = false
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL('/assets/og-image.jpg', Astro.site);
+const structuredData = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'InsuranceAgency',
+  name: business.name,
+  url: new URL('/', Astro.site).href,
+  logo: new URL('/apple-touch-icon.png', Astro.site).href,
+  image: ogImage.href,
+  telephone: contact.phoneHref.replace('tel:', ''),
+  email: contact.email,
+  address: { '@type': 'PostalAddress', addressLocality: business.locality, addressRegion: business.regionCode, addressCountry: business.country },
+  areaServed: { '@type': 'City', name: business.locality },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: contact.openingHours.days,
+    opens: contact.openingHours.opens,
+    closes: contact.openingHours.closes,
+  },
+}).replace(/</g, '\\u003c');
+---
+<!doctype html>
+<html lang="en-CA">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#081520" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    {import.meta.env.PROD && <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'" />}
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="en_CA" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Elaena Brokers logo over a home at dusk" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    {!noindex && <script type="application/ld+json" set:html={structuredData} />}
+  </head>
+  <body><slot /></body>
+</html>

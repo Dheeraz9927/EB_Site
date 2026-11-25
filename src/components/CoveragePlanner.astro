@@ -1,0 +1,18 @@
+---
+import { contact, planner } from '../data/site';
+---
+<dialog id="planner" aria-labelledby="planner-title" data-email={contact.email}>
+  <button class="close-dialog" aria-label="Close call planner">×</button>
+  <span class="eyebrow dark">{planner.eyebrow}</span>
+  <h2 id="planner-title">{planner.title}<br /><em>{planner.titleEmphasis}</em></h2>
+  <p>{planner.intro}</p>
+  <fieldset class="planner-options"><legend class="visually-hidden">What would you like to protect?</legend><label><input type="checkbox" value="auto" /> My car</label><label><input type="checkbox" value="home" /> My home</label><label><input type="checkbox" value="commercial" /> My business</label></fieldset>
+  <div id="checklist"><p class="checklist-empty">{planner.empty}</p></div>
+  <p class="planner-progress" id="planner-progress" aria-live="polite"></p>
+  <div class="planner-contact">
+    <h3>{planner.readyTitle}</h3>
+    <p class="planner-hours">{contact.hours}</p>
+    <div class="planner-actions"><a class="button dark-button" href={contact.phoneHref}>Call {contact.phoneDisplay}</a><a class="button nav-cta" id="planner-email" href={`mailto:${contact.email}`}>{planner.emailLabel}</a></div>
+  </div>
+  <p class="planner-note">{planner.note}</p>
+</dialog>

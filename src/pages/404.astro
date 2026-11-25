@@ -1,0 +1,12 @@
+---
+import Page from '../layouts/Page.astro';
+import { contact } from '../data/site';
+---
+<Page title="Page not found | Elaena Brokers Inc." noindex>
+  <section class="section not-found" aria-labelledby="page-title">
+    <span class="eyebrow dark">ELAENA BROKERS INC. / 404</span>
+    <h1 id="page-title">Let’s get you<br /><em>back on track.</em></h1>
+    <p>We couldn’t find that page. You can head back home or call us on <a href={contact.phoneHref}>{contact.phoneDisplay}</a>.</p>
+    <a class="button accent" href="/">Back to Elaena</a>
+  </section>
+</Page>

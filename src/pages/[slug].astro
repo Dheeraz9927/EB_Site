@@ -1,0 +1,35 @@
+---
+import Page from '../layouts/Page.astro';
+import Contact from '../components/Contact.astro';
+import { coverageKeys, coverage, checklists, coveragePages, type CoverageKey } from '../data/coverage';
+import { contact } from '../data/site';
+export function getStaticPaths() {
+  return coverageKeys.map(key => ({ params: { slug: coveragePages[key].slug }, props: { key } }));
+}
+const { key } = Astro.props as { key: CoverageKey };
+const page = coveragePages[key];
+const info = coverage[key];
+---
+<Page title={page.metaTitle} description={page.metaDescription}>
+  <section class="section coverage-page" aria-labelledby="page-title">
+    <a class="text-link back-link" href="/#coverage">← All coverage</a>
+    <span class="eyebrow dark">{info.label}</span>
+    <h1 id="page-title">{page.heading}</h1>
+    <p class="lede"><strong>{info.title.join(' ')}</strong> {info.description}</p>
+    <div class="coverage-page-actions"><a class="button accent" href={contact.phoneHref}>Call {contact.phoneDisplay}</a><button class="button nav-cta" data-open-planner={key}>{info.cta}</button></div>
+  </section>
+  <section class="section coverage-page-body" aria-labelledby="talk-title">
+    <div class="coverage-page-grid">
+      <div class="glass-card">
+        <h2 id="talk-title">What we’ll talk about</h2>
+        <ol class="coverage-points">{info.points.map(([title, text], i) => <li><span>0{i + 1}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}</ol>
+      </div>
+      <div class="glass-card">
+        <h2>What to have ready</h2>
+        <ul class="ready-list">{checklists[key].items.map(item => <li>{item}</li>)}</ul>
+        <p class="coverage-fine">Coverage and eligibility depend on the insurer and policy terms.</p>
+      </div>
+    </div>
+  </section>
+  <Contact />
+</Page>
