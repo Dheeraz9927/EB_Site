@@ -17,7 +17,7 @@ test('contact details link to phone and email', async ({ page }) => {
   await page.goto('/');
   const contact = page.locator('#contact');
   await expect(contact.locator('a[href="tel:+16479172693"]').first()).toBeVisible();
-  await expect(contact.locator('a[href="mailto:akhatri@unibrokers.ca"]').first()).toBeVisible();
+  await expect(contact.locator('a[href="mailto:aayush.khatri@unibrokers.ca"]').first()).toBeVisible();
   await expect(contact).toContainText('Monday to Friday, 9 am – 7 pm');
 });
 
@@ -55,7 +55,7 @@ test('planner tracks readiness on screen and offers call and email, with no down
   const href = await dialog.locator('#planner-email').getAttribute('href');
   const url = new URL(href);
   expect(url.protocol).toBe('mailto:');
-  expect(url.pathname).toBe('akhatri@unibrokers.ca');
+  expect(url.pathname).toBe('aayush.khatri@unibrokers.ca');
   expect(url.searchParams.get('subject')).toBe('Coverage conversation: Home insurance, Commercial insurance');
   const body = url.searchParams.get('body');
   expect(body).toContain('✓ Current policy and renewal date, if applicable');

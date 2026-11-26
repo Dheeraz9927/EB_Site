@@ -15,7 +15,7 @@ export const business = {
 export const contact = {
   phoneDisplay: '+1 647-917-2693',
   phoneHref: 'tel:+16479172693',
-  email: 'akhatri@unibrokers.ca',
+  email: 'aayush.khatri@unibrokers.ca',
   hours: 'Monday to Friday, 9 am – 7 pm',
   // Used for search-engine structured data (24-hour clock).
   openingHours: { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '09:00', closes: '19:00' },

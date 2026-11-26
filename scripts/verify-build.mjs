@@ -21,7 +21,7 @@ for (const file of htmlFiles) {
   assert.equal((html.match(/<h1\b/g) || []).length, 1, `Page must have exactly one h1 ${where}`);
   assert.ok(html.includes('Content-Security-Policy'), `Production CSP missing ${where}`);
   assert.ok(!/fonts\.(googleapis|gstatic)\.com/.test(html), `Fonts must be self-hosted ${where}`);
-  assert.ok(html.includes('tel:+16479172693') && html.includes('mailto:akhatri@unibrokers.ca'), `Contact details missing ${where}`);
+  assert.ok(html.includes('tel:+16479172693') && html.includes('mailto:aayush.khatri@unibrokers.ca'), `Contact details missing ${where}`);
 
   const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
   assert.equal(new Set(ids).size, ids.length, `Duplicate element IDs ${where}`);

@@ -323,3 +323,13 @@ dialog .planner-hours {
   flex-wrap: wrap;
   gap: 12px;
 }
+
+/* Team headshots share the avatar circle used for initials. */
+.avatar-photo {
+  display: block;
+  object-fit: cover;
+  object-position: center 20%;
+  padding: 0;
+  border: 1px solid var(--glass-edge);
+  background: #e9eef1;
+}

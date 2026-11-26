@@ -1,0 +1,12 @@
+// Cloudflare Workers static-asset hosting for the built site.
+// Build: npm run validate && npm run verify:build   Deploy: npx wrangler deploy
+// "name" must match the Worker's name in the Cloudflare dashboard.
+{
+  "name": "elaenabrokers",
+  "compatibility_date": "2026-06-01",
+  "assets": {
+    "directory": "./dist",
+    // Unknown URLs get dist/404.html with a real 404 status.
+    "not_found_handling": "404-page"
+  }
+}

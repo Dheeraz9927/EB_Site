@@ -4,7 +4,7 @@ ENV ASTRO_TELEMETRY_DISABLED=1
 COPY package*.json ./
 RUN npm ci
 COPY . .
-ARG SITE_URL=https://elaena-brokers.dheerazkishore99.chatgpt.site
+ARG SITE_URL=https://www.elaenabrokers.ca
 ENV SITE_URL=$SITE_URL
 RUN npm run validate && npm run verify:build
 

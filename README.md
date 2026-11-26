@@ -55,9 +55,11 @@ All coverage panels are rendered into the HTML. JavaScript switches visibility w
 
 GitHub is the development repository. The live Sites deployment has its own source remote and is published separately; a GitHub push alone does not update it. CI (`.github/workflows/ci.yml`) validates, runs browser tests and uploads `dist/` as an artifact; it does not deploy.
 
-Set the build-time `SITE_URL` to the final HTTPS origin before building for a custom domain. It controls canonical URLs, social preview URLs, structured data, robots.txt and sitemap.xml. The default in `astro.config.mjs` and the `Dockerfile` is the temporary Sites address. Host `dist/` at the domain root; subdirectory deployments need base-path support before use.
+Set the build-time `SITE_URL` to the final HTTPS origin before building for a custom domain. It controls canonical URLs, social preview URLs, structured data, robots.txt and sitemap.xml. The default in `astro.config.mjs` and the `Dockerfile` is the production domain, `https://www.elaenabrokers.ca`. Host `dist/` at the domain root; subdirectory deployments need base-path support before use.
 
-On a static hosting platform, use Node 24, build command `npm run validate && npm run verify:build`, output `dist`. `_headers` applies only on platforms that support that convention. Other hosts must configure equivalent HTTP response headers; the HTML also includes a CSP fallback, which cannot enforce `frame-ancestors`.
+**Cloudflare (Workers Builds):** connect the GitHub repo, set `NODE_VERSION=24`, build command `npm run validate && npm run verify:build`, deploy command `npx wrangler deploy`. `wrangler.jsonc` serves `dist/` with real 404s; the Worker's name in the dashboard must match `name` there (`elaenabrokers`). Cloudflare applies `public/_headers`. Custom domains on Workers need the domain's DNS on Cloudflare (nameservers pointed to Cloudflare).
+
+On other static hosting platforms, use Node 24, build command `npm run validate && npm run verify:build`, output `dist`. `_headers` applies only on platforms that support that convention. Other hosts must configure equivalent HTTP response headers; the HTML also includes a CSP fallback, which cannot enforce `frame-ancestors`.
 
 For a VM/container deployment:
 
@@ -80,16 +82,15 @@ Review Dependabot pull requests and let CI pass before merging.
 
 ## Business launch requirements
 
-The site publishes the brokerage phone (+1 647-917-2693), email (akhatri@unibrokers.ca) and hours (Monday to Friday, 9 am – 7 pm). The call planner shows what to have ready on screen and offers call/email buttons; the email button only opens a draft in the visitor's own email app. It downloads nothing, stores nothing, and does not submit a quote request or bind insurance.
+The site publishes the brokerage phone (+1 647-917-2693), email (aayush.khatri@unibrokers.ca) and hours (Monday to Friday, 9 am – 7 pm). The call planner shows what to have ready on screen and offers call/email buttons; the email button only opens a draft in the visitor's own email app. It downloads nothing, stores nothing, and does not submit a quote request or bind insurance.
 
 Still to confirm with the brokerage before advertising the site:
 
 - **Office address**, if the brokerage wants to publish one (also enables a map and full local-business data).
 - **RIBO disclosure**: what the brokerage's registration requires the website to display.
 - **Privacy page** wording (`src/pages/privacy.astro`) reviewed against the brokerage's privacy policy.
-- **Team**: spelling and titles of each name, and optional headshots to replace the initials.
+- **Team**: spelling and titles of each name, and headshots for the remaining team cards (original files, not compressed chat copies).
 - **Story**: consent to name previous employers (Allstate, All-Risks).
-- **Custom domain**, then set `SITE_URL`.
 - **Reviews/testimonials**: only real, attributable ones.
 
 Before adding a contact form, confirm the recipient mailbox/CRM, consent/privacy copy and retention policy, then add server-side validation, spam protection, rate limits and delivery monitoring. Do not collect driver's licences or payment information through the site.

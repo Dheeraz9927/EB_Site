@@ -4,7 +4,7 @@ import { team } from '../data/team';
 <section class="team section" id="team">
   <div class="section-heading reveal"><div><span class="eyebrow dark">03 / REAL PEOPLE, ON YOUR SIDE</span><h2>Meet your<br /><em>peace-of-mind people.</em></h2></div><p>Different strengths. One shared focus.<br />Helping you feel more confident about your insurance.</p></div>
   <div class="team-grid">{team.map(person => <article class:list={['person','reveal',{founder:person.founder}]}>
-    <div class="person-top"><span class="avatar" aria-hidden="true">{person.initials}</span><span class="person-tag">{person.group}</span></div>
+    <div class="person-top">{person.photo ? <img class="avatar avatar-photo" src={person.photo} width="293" height="366" alt="" loading="lazy" decoding="async" /> : <span class="avatar" aria-hidden="true">{person.initials}</span>}<span class="person-tag">{person.group}</span></div>
     <h3>{person.name}</h3><p>{person.role}</p><span class="person-bottom">{person.note}</span>
   </article>)}</div>
 </section>
