@@ -17,6 +17,7 @@ export const contact = {
   phoneHref: 'tel:+16479172693',
   email: 'aayush.khatri@unibrokers.ca',
   hours: 'Monday to Friday, 9 am – 7 pm',
+  hoursShort: 'Mon–Fri, 9 am – 7 pm',
   // Used for search-engine structured data (24-hour clock).
   openingHours: { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '09:00', closes: '19:00' },
 };
@@ -38,10 +39,9 @@ export const hero = {
   secondaryCta: { href: '#contact', label: 'Talk to a broker' },
   footLine: 'Personal advice. Real people.',
   footSub: 'A proud UniBrokers franchise.',
-  imageAlt: 'A welcoming contemporary home with warmly lit windows at dusk',
+  imageAlt: 'A smiling father carrying his two young children outside a home with a white picket fence',
   caption: { label: 'FOR EVERYTHING YOU’RE BUILDING', lines: ['A little more certainty.', 'A lot more living.'] },
   note: { title: 'Big moments. Everyday peace of mind.', sub: 'We’re here for both.' },
-  index: '01 / YOUR NEXT CHAPTER',
 };
 
 export const trust = [
@@ -60,6 +60,7 @@ export const approach = {
     { title: 'Then, we make it clear.', text: 'We walk through the options, explain the details and help you understand the trade-offs.' },
     { title: 'We stay in your corner.', text: 'As life changes, your insurance needs can too. Our brokers and support team help you navigate what’s next.' },
   ],
+  image: { src: '/assets/photos/approach', alt: 'Parents walking hand in hand with their young children through a meadow' },
 };
 
 export const story = {
@@ -94,6 +95,8 @@ export const closing = {
   body: 'Let’s make sense of what you need to protect.',
   cta: 'Get ready for your call',
   small: 'See what to have ready, then call or email us when it suits you.',
+  // Decorative background behind the closing call to action.
+  image: '/assets/photos/closing',
 };
 
 export const footer = {

@@ -136,3 +136,27 @@ document.querySelectorAll<HTMLElement>('.person,.coverage-panel').forEach(surfac
 
 // The year is rendered at build time; keep it current between rebuilds.
 document.querySelectorAll<HTMLElement>('[data-year]').forEach(element=>{element.textContent=String(new Date().getFullYear());});
+
+// Header: collapse the info strip once the page scrolls, and mark the section in view.
+const siteHeader=document.querySelector<HTMLElement>('header#top');
+function updateHeader(){
+  siteHeader?.classList.toggle('is-scrolled',window.scrollY>24);
+  if(window.scrollY<200)document.querySelectorAll('#nav a[aria-current]').forEach(link=>link.removeAttribute('aria-current'));
+}
+updateHeader();
+window.addEventListener('scroll',updateHeader,{passive:true});
+
+const sectionLinks=[...document.querySelectorAll<HTMLAnchorElement>('#nav a[href^="#"]')];
+const linkedSections=sectionLinks
+  .map(link=>document.getElementById(link.hash.slice(1)))
+  .filter((section):section is HTMLElement=>section!==null);
+if('IntersectionObserver' in window&&linkedSections.length){
+  const sectionObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
+    if(!entry.isIntersecting)return;
+    sectionLinks.forEach(link=>{
+      if(link.hash===`#${entry.target.id}`)link.setAttribute('aria-current','location');
+      else link.removeAttribute('aria-current');
+    });
+  }),{rootMargin:'-45% 0px -50% 0px'});
+  linkedSections.forEach(section=>sectionObserver.observe(section));
+}

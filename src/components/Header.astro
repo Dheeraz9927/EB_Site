@@ -1,11 +1,23 @@
 ---
-import { nav } from '../data/site';
+import { business, contact, nav } from '../data/site';
 interface Props { base?: string }
 const { base = '' } = Astro.props;
 ---
 <header id="top">
-  <a class="brand" href="/" aria-label="Elaena Brokers home"><img class="brand-logo" src="/assets/logo.webp" width="660" height="180" alt="" decoding="async" /></a>
-  <nav aria-label="Main navigation" id="nav">{nav.map(item => <a href={base + item.href}>{item.label}</a>)}</nav>
-  <button class="button nav-cta" data-open-planner>Let’s find your fit</button>
-  <button class="menu-button" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>
+  <div class="topbar">
+    <p>{business.locality}, {business.region} · A {business.network} franchise</p>
+    <p class="topbar-contact"><span>Open {contact.hoursShort}</span><a href={`mailto:${contact.email}`}>Email us</a></p>
+  </div>
+  <div class="mainbar">
+    <a class="brand" href="/" aria-label="Elaena Brokers home"><img class="brand-logo" src="/assets/logo-dark.webp" width="660" height="180" alt="" decoding="async" /></a>
+    <nav aria-label="Main navigation" id="nav">{nav.map(item => <a href={base + item.href}>{item.label}</a>)}</nav>
+    <div class="header-actions">
+      <a class="header-phone" href={contact.phoneHref} aria-label={`Call ${contact.phoneDisplay}`}>
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg>
+        <span class="header-phone-number">{contact.phoneDisplay}</span><span class="header-phone-short">Call</span>
+      </a>
+      <button class="button nav-cta" data-open-planner>Talk to a broker</button>
+      <button class="menu-button" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>
+    </div>
+  </div>
 </header>

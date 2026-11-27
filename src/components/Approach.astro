@@ -2,6 +2,6 @@
 import { approach } from '../data/site';
 ---
 <section class="approach section">
-  <div class="approach-title reveal"><span class="eyebrow dark">{approach.eyebrow}</span><h2>{approach.title}<br /><em>{approach.titleEmphasis}</em></h2><p>{approach.intro[0]}<br />{approach.intro[1]}</p></div>
+  <div class="approach-title reveal"><span class="eyebrow dark">{approach.eyebrow}</span><h2>{approach.title}<br /><em>{approach.titleEmphasis}</em></h2><p>{approach.intro[0]}<br />{approach.intro[1]}</p><figure class="approach-photo"><img src={`${approach.image.src}-1000.webp`} srcset={`${approach.image.src}-640.webp 640w, ${approach.image.src}-1000.webp 1000w`} sizes="(max-width: 800px) 90vw, 40vw" width="1000" height="770" alt={approach.image.alt} loading="lazy" decoding="async" /></figure></div>
   <div class="steps">{approach.steps.map((step, i) => <article class="reveal"><span>0{i + 1}</span><div><h3>{step.title}</h3><p>{step.text}</p></div></article>)}</div>
 </section>

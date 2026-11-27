@@ -1,6 +1,6 @@
 # Project guidance
 
-- Preserve Elaena's glass visual direction and approved business content.
+- Preserve Elaena's light visual direction (warm paper background, navy type, trust-blue primary colour with gold highlights, 2–4px corners, frosted glass only over the hero photo and header) and approved business content.
 - Keep the site static unless a requested feature requires server-side processing.
 - Put editable content in src/data; reuse semantic Astro components.
 - Keep fonts/assets self-hosted and avoid inline executable scripts under the production CSP.

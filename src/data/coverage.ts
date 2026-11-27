@@ -1,6 +1,6 @@
 export const coverageKeys = ['auto', 'home', 'commercial'] as const;
 export type CoverageKey = typeof coverageKeys[number];
-export interface Coverage { label:string; title:string[]; description:string; cta:string; points:string[][]; }
+export interface Coverage { label:string; title:string[]; description:string; cta:string; points:string[][]; image:{ src:string; alt:string }; }
 export const coverage: Record<CoverageKey,Coverage> = {
   "auto": {
     "label": "AUTO / EVERY JOURNEY MATTERS",
@@ -10,6 +10,7 @@ export const coverage: Record<CoverageKey,Coverage> = {
     ],
     "description": "From your daily commute to the weekend escape, let’s find coverage that reflects how you drive and what you need.",
     "cta": "Plan my auto coverage",
+    "image": { "src": "/assets/photos/auto", "alt": "A family gathered around the open boot of their car" },
     "points": [
       [
         "Your vehicle & your routine",
@@ -33,6 +34,7 @@ export const coverage: Record<CoverageKey,Coverage> = {
     ],
     "description": "Whether you own a house, live in a condo or rent your home, we’ll help you explore protection for your space and the things you value.",
     "cta": "Plan my home coverage",
+    "image": { "src": "/assets/photos/home", "alt": "A family laughing together in their kitchen" },
     "points": [
       [
         "The place you call home",
@@ -56,6 +58,7 @@ export const coverage: Record<CoverageKey,Coverage> = {
     ],
     "description": "You put a lot into your business. Let’s understand your operations and explore insurance options that reflect the work you do.",
     "cta": "Plan my business coverage",
+    "image": { "src": "/assets/photos/commercial", "alt": "A small business owner preparing orders in her workshop" },
     "points": [
       [
         "Your business, understood",

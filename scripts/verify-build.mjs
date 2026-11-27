@@ -10,7 +10,7 @@ const required = [
   'auto-insurance/index.html', 'home-insurance/index.html', 'commercial-insurance/index.html',
   'robots.txt', 'sitemap.xml', 'favicon.ico', 'favicon-32.png', 'apple-touch-icon.png',
   'assets/hero.webp', 'assets/hero-768.webp', 'assets/hero-1152.webp',
-  'assets/logo.webp', 'assets/shield.webp', 'assets/og-image.jpg',
+  'assets/logo-dark.webp', 'assets/shield.webp', 'assets/shield-dark.webp', 'assets/og-image.jpg',
 ];
 for (const file of required) assert.ok(fs.existsSync(path.join(root, file)), `Missing build artifact: ${file}`);
 

@@ -9,17 +9,6 @@
   background: none;
   flex-shrink: 0;
 }
-.closing-monogram {
-  width: auto;
-  height: 520px;
-  opacity: 0.07;
-  font-size: 0;
-}
-@media (max-width: 800px) {
-  .closing-monogram {
-    height: 320px;
-  }
-}
 
 /* Coverage tab actions: checklist button plus link to the dedicated page. */
 .coverage-actions {
@@ -37,7 +26,7 @@
   align-items: center;
 }
 .contact-intro > p {
-  color: #bccdd7;
+  color: var(--muted);
   font-size: 16px;
   max-width: 440px;
   margin-top: 23px;
@@ -51,17 +40,15 @@
   margin: 16px 0 0;
 }
 .contact-title em {
-  color: #b9e6d9;
+  color: var(--trust);
 }
 .contact-card,
 .glass-card {
   padding: 34px;
   border: 1px solid var(--glass-edge);
-  border-radius: 26px;
-  background: linear-gradient(135deg, #c2f0ff14, #b5e9cb06);
+  border-radius: var(--radius);
+  background: var(--surface);
   box-shadow: var(--glass-shadow);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
 }
 .contact-card dl {
   margin: 0 0 28px;
@@ -80,7 +67,7 @@
   font-size: 12px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: #b4c8d1;
+  color: var(--muted);
 }
 .contact-card dd {
   margin: 0;
@@ -89,10 +76,10 @@
 }
 .contact-card dd a {
   color: var(--ink);
-  border-bottom: 1px solid #d4ae6e80;
+  border-bottom: 1px solid var(--accent);
 }
 .contact-card dd a:hover {
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 .contact-actions {
   display: flex;
@@ -102,7 +89,7 @@
 }
 .contact-note {
   font-size: 13px;
-  color: #a6b8c4;
+  color: var(--muted);
   margin: 24px 0 0;
   line-height: 1.7;
 }
@@ -117,16 +104,16 @@
   max-width: 420px;
 }
 .footer-contact a {
-  color: #dbe7ee;
+  color: var(--ink);
 }
 .footer-contact a:hover,
 .footer-links a:hover {
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 /* Standalone pages sit below the fixed glass header. */
 main.subpage {
-  padding-top: 120px;
+  padding-top: 48px;
   min-height: 70vh;
 }
 .subpage h1 {
@@ -135,7 +122,7 @@ main.subpage {
   margin: 18px 0 22px;
 }
 .subpage h1 em {
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 .back-link {
   display: inline-block;
@@ -148,7 +135,7 @@ main.subpage {
   max-width: 720px;
   font-size: 18px;
   line-height: 1.75;
-  color: #d1dee7;
+  color: var(--muted);
 }
 .coverage-page .lede strong {
   display: block;
@@ -188,7 +175,7 @@ main.subpage {
 .glass-card .coverage-points li > span {
   min-width: 18px;
   font-size: 12px;
-  color: var(--accent);
+  color: var(--accent-ink);
   padding-top: 5px;
 }
 .glass-card .coverage-points h3 {
@@ -199,7 +186,7 @@ main.subpage {
 .glass-card .coverage-points p,
 .ready-list {
   max-width: none;
-  color: #bccdd7;
+  color: var(--muted);
   font-size: 16px;
   margin: 0;
 }
@@ -221,17 +208,17 @@ main.subpage {
   margin: 38px 0 12px;
 }
 .prose p {
-  color: #c4d3dc;
+  color: var(--muted);
   font-size: 16px;
   line-height: 1.8;
 }
 .prose a,
 .not-found p a {
   color: var(--ink);
-  border-bottom: 1px solid #d4ae6e80;
+  border-bottom: 1px solid var(--accent);
 }
 .not-found p {
-  color: #c4d3dc;
+  color: var(--muted);
   margin: 26px 0;
   max-width: 560px;
 }
@@ -253,7 +240,7 @@ main.subpage {
     gap: 4px;
   }
   main.subpage {
-    padding-top: 100px;
+    padding-top: 32px;
   }
 }
 
@@ -291,10 +278,10 @@ fieldset.planner-options {
   width: 18px;
   height: 18px;
   margin: 3px 0 0;
-  accent-color: var(--accent);
+  accent-color: var(--trust);
 }
 #checklist li label:has(input:checked) {
-  color: #8fa3b0;
+  color: var(--muted);
   text-decoration: line-through;
   text-decoration-color: #d4ae6e99;
 }
@@ -302,7 +289,7 @@ fieldset.planner-options {
   min-height: 1.5em;
   margin: 0 0 6px;
   font-size: 14px;
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 .planner-contact {
   margin-top: 18px;
@@ -316,7 +303,7 @@ fieldset.planner-options {
 dialog .planner-hours {
   margin: 0 0 16px;
   font-size: 14px;
-  color: #b8c9d3;
+  color: var(--muted);
 }
 .planner-actions {
   display: flex;
@@ -331,5 +318,5 @@ dialog .planner-hours {
   object-position: center 20%;
   padding: 0;
   border: 1px solid var(--glass-edge);
-  background: #e9eef1;
+  background: var(--paper-2);
 }
